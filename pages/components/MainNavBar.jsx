@@ -1,5 +1,3 @@
-//導覽列(網頁最上面那條)
-
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";

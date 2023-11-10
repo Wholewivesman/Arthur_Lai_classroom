@@ -1,14 +1,12 @@
 const { createServer } = require("http");
 const { parse } = require("url");
 const next = require("next");
-// const { PrismaClient } = require("@prisma/client");
 
 const port = parseInt(process.env.PORT || "3000", 10);
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost";
 const app = next({ dev, hostname, port });
 const requestHandler = app.getRequestHandler();
-//const prisma = new PrismaClient();
 
 app.prepare().then(() => {
   createServer(async (req, res) => {
