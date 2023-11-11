@@ -12,7 +12,7 @@ async function handleStudentSubmit(event) {
       id,
       password,
     }),
-  }).then((res) => console.log(res));
+  }).then((res) => {global.userToken=res.body;});
 }
 
 function StudentForm() {

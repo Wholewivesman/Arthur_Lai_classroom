@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
+import { Jwt } from "jsonwebtoken";
 
 const prisma = new PrismaClient();
 
@@ -15,5 +16,5 @@ export default async (req, res) => {
   //   data,
   // });
   // res.json(savedUser);
-  res.json(data);
+  res.status(200).json(data);
 };
