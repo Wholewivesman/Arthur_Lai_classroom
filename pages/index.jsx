@@ -8,7 +8,15 @@ function Announcement() {
 }
 
 function Rules() {
-  return <Container></Container>;
+  return(
+  <Container>
+  <h1 className="text-center">課堂規範</h1>
+  <div className="w-100"></div>
+  <h1 className="text-center">1. 不要睡覺</h1>
+  <h1 className="text-center">2. 不要聊天</h1>
+  <h1 className="text-center">3. 不會的要舉手發問</h1>
+  </Container>
+  );
 }
 
 export default function HomePage() {
