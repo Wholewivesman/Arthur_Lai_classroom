@@ -8,11 +8,9 @@ export default function HomePage() {
     <>
       <MainNavbar>
       </ MainNavbar>
-
       <Container>
         {/* 聖哲的官網 */}
-        <div id="root">
-        </div>
+        <h1>聖哲老師的班級網站</h1>
         <Container>
           {/* 公告 */}
           {/* 課堂規範 */}
