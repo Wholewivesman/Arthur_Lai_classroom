@@ -22,14 +22,8 @@ export default async (req, res) => {
     },
   });
 
-  if (result === null) {
-    res.status(401).json({ message: "Invalid id", err: "id" });
-    return;
-  }
-
-  if(result.password !== password)
-  {
-    res.status(401).json({ message: "Invalid password", err: "password" });
+  if (result === null || result.password !== password) {
+    res.status(401).json({ message: "Login faild" });
     return;
   }
 
@@ -38,5 +32,5 @@ export default async (req, res) => {
     process.env.SECRET_KEY
   );
 
-  res.status(200).json({token});
+  res.status(200).json({ token });
 };
