@@ -6,9 +6,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function HomePage() {
   return (
     <>
-      <MainNavbar />
+      <MainNavbar>
+      </ MainNavbar>
+
       <Container>
         {/* 聖哲的官網 */}
+        <div id="root">
+        </div>
         <Container>
           {/* 公告 */}
           {/* 課堂規範 */}
