@@ -8,13 +8,15 @@ export default () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">聖哲老師的學習網站</Navbar.Brand>
+        <Navbar.Brand href="/">聖哲老師的學習網站</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="nav navbar-nav ms-auto">
-          {/* <Nav className="me-auto"> */}
-            <Nav.Link className="active" href="#home">課程</Nav.Link>
-            <Nav.Link href="#link">登入</Nav.Link>
+            {/* <Nav className="me-auto"> */}
+            <Nav.Link className="active" href="#home">
+              課程
+            </Nav.Link>
+            <Nav.Link href="/Login">登入</Nav.Link>
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
@@ -31,4 +33,4 @@ export default () => {
       </Container>
     </Navbar>
   );
-}
+};
