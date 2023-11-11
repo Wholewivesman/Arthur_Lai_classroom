@@ -8,11 +8,12 @@ export default () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="#home">回主畫面</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">課程</Nav.Link>
+          <Nav className="nav navbar-nav navbar-right">
+          {/* <Nav className="me-auto"> */}
+            <Nav.Link classname="active" href="#home">課程</Nav.Link>
             <Nav.Link href="#link">登入</Nav.Link>
             <Nav.Item></Nav.Item>
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
