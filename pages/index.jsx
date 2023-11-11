@@ -53,21 +53,36 @@ function Gallery() {
   return (
     <Carousel>
       <Carousel.Item>
-        <Placeholder className="bg-dark w-100" as={Image} text="First slide" style={{height: "180px"}} />
+        <Placeholder
+          className="bg-dark w-100"
+          as={Image}
+          text="First slide"
+          style={{ height: "180px" }}
+        />
         <Carousel.Caption>
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-      <Placeholder className="bg-dark w-100" as={Image} text="Second slide" style={{height: "180px"}} />
+        <Placeholder
+          className="bg-dark w-100"
+          as={Image}
+          text="Second slide"
+          style={{ height: "180px" }}
+        />
         <Carousel.Caption>
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-      <Placeholder className="bg-dark w-100" as={Image} text="Third slide" style={{height: "180px"}} />
+        <Placeholder
+          className="bg-dark w-100"
+          as={Image}
+          text="Third slide"
+          style={{ height: "180px" }}
+        />
         <Carousel.Caption>
           <h3>Third slide label</h3>
           <p>
@@ -83,15 +98,15 @@ export default function HomePage() {
   return (
     <>
       <MainNavbar />
+      <div className="w-100">
+        <Gallery />
+      </div>
       <Container className="mt-3">
         {/* 聖哲的官網 */}
-        <h1 className="text-center">聖哲老師的學習網站</h1>
+        {/* <h1 className="text-center">聖哲老師的學習網站</h1> */}
         <Container className="d-flex justify-content-around mt-5">
           <Announcement />
           <Rules />
-        </Container>
-        <Container className="mt-3">
-          <Gallery />
         </Container>
         {/* <Container className="d-flex justify-content-around mt-5">
           <Test1 />
