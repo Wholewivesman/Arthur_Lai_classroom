@@ -15,5 +15,5 @@ export default async (req, res) => {
   //   data,
   // });
   // res.json(savedUser);
-  res.json(password);
+  res.json(data);
 };
