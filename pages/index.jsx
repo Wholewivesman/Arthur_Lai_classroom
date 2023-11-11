@@ -34,21 +34,6 @@ function Rules() {
   );
 }
 
-function Test1() {
-  return (
-    <Card style={{ width: "40%" }}>
-      <Card.Header className="text-center">最新公告</Card.Header>
-      <Card.Body>
-        <ListGroup style={{ border: "none" }}>
-          <ListGroupItem>1. 不要睡覺</ListGroupItem>
-          <ListGroupItem>2. 不要聊天</ListGroupItem>
-          <ListGroupItem>3. 不會的要舉手發問</ListGroupItem>
-        </ListGroup>
-      </Card.Body>
-    </Card>
-  );
-}
-
 function Gallery() {
   return (
     <Carousel>
