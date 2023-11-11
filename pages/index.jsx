@@ -1,10 +1,11 @@
 import {
-  Form,
-  Button,
   Container,
   ListGroup,
   ListGroupItem,
   Card,
+  Carousel,
+  Placeholder,
+  Image,
 } from "react-bootstrap";
 import Link from "next/link";
 import MainNavbar from "./components/MainNavbar";
@@ -48,6 +49,36 @@ function Test1() {
   );
 }
 
+function Gallery() {
+  return (
+    <Carousel>
+      <Carousel.Item>
+        <Placeholder className="bg-dark w-100" as={Image} text="First slide" style={{height: "180px"}} />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+      <Placeholder className="bg-dark w-100" as={Image} text="Second slide" style={{height: "180px"}} />
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+      <Placeholder className="bg-dark w-100" as={Image} text="Third slide" style={{height: "180px"}} />
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
@@ -58,6 +89,9 @@ export default function HomePage() {
         <Container className="d-flex justify-content-around mt-5">
           <Announcement />
           <Rules />
+        </Container>
+        <Container className="mt-3">
+          <Gallery />
         </Container>
         {/* <Container className="d-flex justify-content-around mt-5">
           <Test1 />
