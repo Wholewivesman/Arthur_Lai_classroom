@@ -7,8 +7,7 @@ import {
   Placeholder,
   Image,
 } from "react-bootstrap";
-import { useEffect } from "react";
-import MainNavbar from "./components/MainNavbar";
+import MainNavbar from "../components/MainNavbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Announcement() {
