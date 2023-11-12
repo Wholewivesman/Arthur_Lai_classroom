@@ -56,7 +56,7 @@ function AfterLoggedIn() {
               title="課程"
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item href="#action/3.1">數學課</NavDropdown.Item>
+              <NavDropdown.Item href="/ClassPage">數學課</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">國語課</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">英文課</NavDropdown.Item>
               <NavDropdown.Divider />

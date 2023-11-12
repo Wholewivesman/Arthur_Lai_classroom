@@ -16,7 +16,13 @@ export default async (req, res) => {
   let success = false;
 
   if (typeof token === "string") {
-    success = verify(token, process.env.JWT_SECRET);
+    try {
+      success = verify(token, process.env.JWT_SECRET);
+    }
+    catch {
+      res.json({ success: false });
+      return;
+    }
   }
 
   res.json({ success });
