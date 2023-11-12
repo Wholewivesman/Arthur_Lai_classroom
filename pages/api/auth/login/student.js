@@ -22,21 +22,15 @@ export default async (req, res) => {
     },
   });
 
-  if (result === null) {
-    res.status(401).json({ message: "Invalid id", err: "id" });
-    return;
-  }
-
-  if(result.password !== password)
-  {
-    res.status(401).json({ message: "Invalid password", err: "password" });
+  if (result === null || result.password !== password) {
+    res.status(401).json({ message: "Login faild" });
     return;
   }
 
   const token = sign(
     { payload, exp: Math.floor(Date.now() / 1000) + 60 * 80 },
-    process.env.SECRET_KEY
+    process.env.JWT_SECRET
   );
 
-  res.status(200).json({token});
+  res.status(200).json({ token });
 };
