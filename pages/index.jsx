@@ -14,7 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function Announcement() {
   return (
     <Card style={{ width: "40%" }}>
-      <Card.Header className="text-center">最新公告</Card.Header>
+      <Card.Header className="text-center"><font face="UD Digi Kyokasho NK-B">最新公告</font></Card.Header>
     </Card>
   );
 }
@@ -22,7 +22,7 @@ function Announcement() {
 function Rules() {
   return (
     <Card style={{ width: "40%" }}>
-      <Card.Header className="text-center">課堂規範</Card.Header>
+      <Card.Header className="text-center"><font face="UD Digi Kyokasho NK-B">課堂規範</font></Card.Header>
       <Card.Body>
         <ListGroup style={{ border: "none" }}>
           <ListGroupItem>1. 不要睡覺</ListGroupItem>
@@ -42,7 +42,7 @@ function Gallery() {
           className="bg-dark w-100"
           as={Image}
           text="First slide"
-          style={{ height: "180px" }}
+          style={{ height: "300px" }}
         />
         <Carousel.Caption>
           <h3>First slide label</h3>
@@ -54,7 +54,7 @@ function Gallery() {
           className="bg-dark w-100"
           as={Image}
           text="Second slide"
-          style={{ height: "180px" }}
+          style={{ height: "300px" }}
         />
         <Carousel.Caption>
           <h3>Second slide label</h3>
@@ -66,7 +66,7 @@ function Gallery() {
           className="bg-dark w-100"
           as={Image}
           text="Third slide"
-          style={{ height: "180px" }}
+          style={{ height: "300px" }}
         />
         <Carousel.Caption>
           <h3>Third slide label</h3>
