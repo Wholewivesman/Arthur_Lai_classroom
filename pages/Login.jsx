@@ -1,8 +1,9 @@
 import { Button, Card, Container, Form } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import MainNavbar from "./components/MainNavbar";
 import { useState, Dispatch, SetStateAction } from "react";
 import { NextRouter, useRouter } from "next/router";
+import MainNavbar from "./components/MainNavbar";
+import { setTokenLocal } from "./client/token";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 /**
  *
@@ -16,7 +17,7 @@ async function handleStudentSubmit(event, setHasError, router) {
   const password = document.getElementById("password-input").value;
 
   let status;
-  await fetch("/api/login/student", {
+  await fetch("/api/auth/login/student", {
     method: "POST",
     body: JSON.stringify({
       id,
@@ -30,7 +31,7 @@ async function handleStudentSubmit(event, setHasError, router) {
     .then((data) => {
       switch (status) {
         case 200:
-          localStorage.setItem("userToken", data.token);
+          setTokenLocal(data.token);
           router.push("/");
           break;
         case 401:

@@ -29,7 +29,7 @@ export default async (req, res) => {
 
   const token = sign(
     { payload, exp: Math.floor(Date.now() / 1000) + 60 * 80 },
-    process.env.SECRET_KEY
+    process.env.JWT_SECRET
   );
 
   res.status(200).json({ token });

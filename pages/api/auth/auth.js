@@ -13,11 +13,11 @@ export default async (req, res) => {
   const payload = JSON.parse(req.body);
   const { token } = payload;
 
-  let loggedIn = false;
+  let success = false;
 
   if (typeof token === "string") {
-    loggedIn = verify(token, process.env.SECRET_KEY);
+    success = verify(token, process.env.JWT_SECRET);
   }
 
-  res.json({ loggedIn });
+  res.json({ success });
 };

@@ -1,7 +1,17 @@
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { verify } from "../client/token";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function MainNavbar(loggedIn) {
+export default function MainNavbar() {
+  let authed = false;
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    if (!authed) {
+      verify().then(success => setLoggedIn(success));
+      authed = true;
+    }
+  }, [authed]);
   return (
     <Navbar
       expand="lg"
@@ -53,4 +63,4 @@ export default function MainNavbar(loggedIn) {
       </Container>
     </Navbar>
   );
-};
+}

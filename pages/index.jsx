@@ -80,25 +80,9 @@ function Gallery() {
 }
 
 export default function HomePage() {
-  let loggedIn;
-  useEffect(() => {
-    async function foo() {
-      const userToken = localStorage.getItem("userToken");
-      console.log(userToken);
-      await fetch("/api/login/auth", {
-        method: "POST",
-        body: JSON.stringify({ userToken }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          loggedIn = data.loggedIn;
-        });
-    };
-    foo();
-  }, [loggedIn]);
   return (
     <>
-      <MainNavbar userToken={loggedIn} />
+      <MainNavbar />
       <div className="w-100">
         <Gallery />
       </div>
