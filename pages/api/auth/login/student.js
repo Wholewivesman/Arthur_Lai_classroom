@@ -23,7 +23,7 @@ export default async (req, res) => {
   });
 
   if (result === null || result.password !== password) {
-    res.status(401).json({ message: "Login faild" });
+    res.status(401).json({ message: "Login failed" });
     return;
   }
 

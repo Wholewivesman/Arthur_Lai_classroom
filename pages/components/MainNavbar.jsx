@@ -87,5 +87,5 @@ export default function MainNavbar() {
       authed = true;
     }
   }, [authed]);
-  return <>{loggedIn ? <BeforeLoggedIn /> : <AfterLoggedIn />}</>;
+  return <>{loggedIn ? <AfterLoggedIn /> : <BeforeLoggedIn />}</>;
 }
