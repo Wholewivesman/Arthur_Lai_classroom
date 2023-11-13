@@ -3,7 +3,7 @@
     "dev": "nodemon",
     "studio": "npx prisma studio",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "@prisma/client": "^5.5.2",

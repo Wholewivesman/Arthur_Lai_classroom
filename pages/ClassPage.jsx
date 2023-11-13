@@ -1,36 +1,73 @@
-import { ToggleButtonGroup, ToggleButton, Container, Button } from "react-bootstrap";
+import {
+  ToggleButtonGroup,
+  ToggleButton,
+  Container,
+  Button,
+} from "react-bootstrap";
 import { useState } from "react";
+import { Homeworks, Materials, Tests } from "../components/ClassComponents";
 import MainNavbar from "../components/MainNavbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+/**
+ *
+ * @param {string} componentValue
+ */
+function ComponentBlock(componentValue) {
+  switch (componentValue) {
+    case "1":
+      return <Materials />;
+    case "2":
+      return <Homeworks />;
+    case "3":
+      return <Tests />;
+    default:
+      break;
+  }
+  return <div />;
+}
+
 export default () => {
-  const tools = [
+  const components = [
     { name: "教材", value: "1" },
     { name: "作業", value: "2" },
     { name: "測驗", value: "3" },
   ];
-  const [toolValue, setToolValue] = useState("1");
+  const [componentValue, setcomponentValue] = useState("1");
   return (
     <div>
       <MainNavbar />
       <div className="px-1 pt-4 d-flex" style={{ minHeight: "75vh" }}>
-        <Container className="mx-3 col-1 p-2 border-5 rounded" style={{backgroundColor: "lightskyblue"}}>
-          <ToggleButtonGroup className="w-100 mb-auto" name="tool" vertical>
-            {tools.map((tool) => (
-              <Button
-                key={`tool-${tool.value}`}
-                id={`tool-${tool.value}`}
-                variant="primary"
-                value={tool.value}
-                active={toolValue === tool.value}
-                onClick={(e) => setToolValue(e.currentTarget.value)}
-              >
-                {tool.name}
-              </Button>
-            ))}
-          </ToggleButtonGroup>
-        </Container>
-        <div className="col-11"></div>
+        <div className="col-1">
+          <Container
+            className="mx-3 p-2 border-5 rounded h-100"
+            style={{ backgroundColor: "lightskyblue" }}
+          >
+            <ToggleButtonGroup
+              className="w-100 mb-auto"
+              name="component"
+              vertical
+            >
+              {components.map((component) => (
+                <Button
+                  key={`component-${component.value}`}
+                  id={`component-${component.value}`}
+                  variant="primary"
+                  value={component.value}
+                  active={componentValue === component.value}
+                  onClick={(e) => setcomponentValue(e.currentTarget.value)}
+                >
+                  {component.name}
+                </Button>
+              ))}
+            </ToggleButtonGroup>
+          </Container>
+        </div>
+        <div className="col-11 px-5">
+          <Container className="bg-dark h-100 border-5 rounded">
+            <ComponentBlock componentValue={componentValue} />
+          </Container>
+        </div>
       </div>
     </div>
   );

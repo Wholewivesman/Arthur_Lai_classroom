@@ -3,5 +3,5 @@
         "server.js"
     ],
     "exec": "node server.js",
-    "ext": "js"
+    "ext": "js jsx"
 }
