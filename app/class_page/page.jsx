@@ -13,10 +13,12 @@ import Tests from "./Tests";
 import MainNavbar from "@/components/MainNavbar";
 
 /**
- *
- * @param {string} componentValue
+ * @component
+ * @param {object} props
+ * @param {string} props.componentValue
+ * @returns 
  */
-function ComponentBlock(componentValue) {
+function ComponentBlock({componentValue}) {
   switch (componentValue) {
     case "1":
       return <Resources />;
