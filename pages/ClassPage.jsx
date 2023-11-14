@@ -7,7 +7,6 @@ import {
 import { useState } from "react";
 import { Homeworks, Materials, Tests } from "../components/ClassComponents";
 import MainNavbar from "../components/MainNavbar";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 /**
  *

@@ -1,7 +1,6 @@
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { verify } from "../client/token";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function BeforeLoggedIn() {
   return (

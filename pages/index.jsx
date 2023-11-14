@@ -8,7 +8,6 @@ import {
   Image,
 } from "react-bootstrap";
 import MainNavbar from "../components/MainNavbar";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function Announcement() {
   return (

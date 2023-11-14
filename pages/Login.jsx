@@ -3,7 +3,6 @@ import { useState, Dispatch, SetStateAction } from "react";
 import { NextRouter, useRouter } from "next/router";
 import MainNavbar from "../components/MainNavbar";
 import { setTokenLocal } from "../client/token";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 /**
  *
