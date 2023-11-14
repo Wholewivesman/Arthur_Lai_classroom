@@ -1,6 +1,8 @@
+"use client";
+
 import { Button, Card, Container, Form } from "react-bootstrap";
 import { useState, Dispatch, SetStateAction } from "react";
-import { NextRouter, useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import MainNavbar from "../components/MainNavbar";
 import { setTokenLocal } from "../client/token";
 
@@ -8,7 +10,7 @@ import { setTokenLocal } from "../client/token";
  *
  * @param {import("react").FormEvent} event
  * @param {Dispatch<SetStateAction<boolean>>} setHasError
- * @param {NextRouter} router
+ * @param router
  */
 async function handleStudentSubmit(event, setHasError, router) {
   event.preventDefault();
@@ -16,7 +18,7 @@ async function handleStudentSubmit(event, setHasError, router) {
   const password = document.getElementById("password-input").value;
 
   let status;
-  await fetch("/api/auth/login/student", {
+  fetch("/api/auth/login/student", {
     method: "POST",
     body: JSON.stringify({
       id,
@@ -25,7 +27,7 @@ async function handleStudentSubmit(event, setHasError, router) {
   })
     .then((res) => {
       status = res.status;
-      return res.json();
+      if (status == 200) return res.json();
     })
     .then((data) => {
       switch (status) {
@@ -39,7 +41,6 @@ async function handleStudentSubmit(event, setHasError, router) {
         default:
           break;
       }
-      console.log(data);
     });
 }
 
@@ -53,7 +54,11 @@ function StudentForm() {
       </Card.Header>
       <Card.Body>
         <Container>
-          <Form onSubmit={(event) => handleStudentSubmit(event, setHasError, router)}>
+          <Form
+            onSubmit={(event) =>
+              handleStudentSubmit(event, setHasError, router)
+            }
+          >
             <Form.Label>學號:</Form.Label>
             <Form.Control id="id-input" type="text"></Form.Control>
             <Form.Label>密碼:</Form.Label>

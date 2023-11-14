@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ToggleButtonGroup,
   ToggleButton,
@@ -5,8 +7,10 @@ import {
   Button,
 } from "react-bootstrap";
 import { useState } from "react";
-import { Homeworks, Materials, Tests } from "../components/ClassComponents";
-import MainNavbar from "../components/MainNavbar";
+import Homeworks from "./Homeworks";
+import Resources from "./Resources";
+import Tests from "./Tests";
+import MainNavbar from "@/components/MainNavbar";
 
 /**
  *
@@ -15,7 +19,7 @@ import MainNavbar from "../components/MainNavbar";
 function ComponentBlock(componentValue) {
   switch (componentValue) {
     case "1":
-      return <Materials />;
+      return <Resources />;
     case "2":
       return <Homeworks />;
     case "3":

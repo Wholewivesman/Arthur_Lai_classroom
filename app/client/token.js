@@ -1,3 +1,5 @@
+"use client";
+
 const AUTH_TOKEN_NAME = "auth_token";
 
 export function getTokenLocal() {
@@ -14,7 +16,7 @@ export function setTokenLocal(token) {
 export async function verify() {
   let success = false;
   const token = getTokenLocal();
-  await fetch("/api/auth/auth", {
+  await fetch("/api/auth", {
     method: "POST",
     body: JSON.stringify({ token }),
   })
@@ -22,7 +24,7 @@ export async function verify() {
       if (res.status === 200) return res.json();
     })
     .then((data) => {
-      success = data.success;
+      if (data) success = data.success;
     });
   return success;
 }

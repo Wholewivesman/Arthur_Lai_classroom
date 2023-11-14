@@ -1,20 +1,17 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { sign } from "jsonwebtoken";
 
 const prisma = new PrismaClient();
 
 /**
- * @param {NextApiRequest} req
- * @param {NextApiResponse} res
+ * @param {NextRequest} req
  */
-export default async (req, res) => {
-  if (req.method !== "POST") {
-    res.status(405).json({ message: "Method not allowed" });
-    return;
-  }
-  const payload = JSON.parse(req.body);
+export async function POST(req) {
+  const payload = await req.json();
   const { id, password } = payload;
+  if (!id || !password)
+    return NextResponse.json({ message: "Login failed" }, { status: 401 });
   prisma.$connect();
   const result = await prisma.student.findUnique({
     where: {
@@ -23,8 +20,7 @@ export default async (req, res) => {
   });
 
   if (result === null || result.password !== password) {
-    res.status(401).json({ message: "Login failed" });
-    return;
+    return Response.json({ message: "Login failed" }, { status: 401 });
   }
 
   const token = sign(
@@ -32,5 +28,5 @@ export default async (req, res) => {
     process.env.JWT_SECRET
   );
 
-  res.status(200).json({ token });
-};
+  return Response.json({ token });
+}

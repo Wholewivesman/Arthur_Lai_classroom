@@ -1,3 +1,5 @@
+"use client";
+
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { verify } from "../client/token";
@@ -21,7 +23,7 @@ function BeforeLoggedIn() {
             <Nav.Link
               style={{ fontSize: "20px" }}
               className="active"
-              href="/Login"
+              href="/login"
             >
               <b>
                 <font face="UD Digi Kyokasho NK-B">帳號登入</font>
@@ -55,7 +57,7 @@ function AfterLoggedIn() {
               title="課程"
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item href="/ClassPage">數學課</NavDropdown.Item>
+              <NavDropdown.Item href="/class_page">數學課</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">國語課</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">英文課</NavDropdown.Item>
               <NavDropdown.Divider />

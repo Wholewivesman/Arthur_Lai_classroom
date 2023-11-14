@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Container,
   ListGroup,
@@ -7,7 +9,7 @@ import {
   Placeholder,
   Image,
 } from "react-bootstrap";
-import MainNavbar from "../components/MainNavbar";
+import MainNavbar from "@/components/MainNavbar";
 
 function Announcement() {
   return (
