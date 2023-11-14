@@ -14,7 +14,7 @@ export async function POST(req) {
     try {
       success = verify(token, process.env.JWT_SECRET);
     } catch {
-      console.log(token);
+      return NextResponse.json({ success });
     }
   }
 
