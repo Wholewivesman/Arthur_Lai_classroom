@@ -10,7 +10,7 @@ import { useCallback } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import Homeworks from "./Homeworks";
 import Resources from "./Resources";
-import Tests from "./Tests";
+import Tests from "./Exam";
 import MainNavbar from "@/components/MainNavbar";
 import Link from "next/link";
 

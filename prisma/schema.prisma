@@ -16,3 +16,15 @@ model Student {
   // name String
   // loginHash String?
 }
+
+model Exam {
+  id Int @id @default(autoincrement())
+  name String
+}
+
+model Question {
+  id Int @id @default(autoincrement())
+  statement String
+  optionJson String
+  explanation String
+}

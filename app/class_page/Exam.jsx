@@ -1,7 +1,7 @@
 "use client";
 
 import { Col, Row } from "react-bootstrap";
-import TestCard from "./TestCard";
+import TestCard from "./ExamCard";
 
 export default () => {
   const arr = Array.from(Array(10).keys())
