@@ -6,20 +6,22 @@ import {
   Container,
   Button,
 } from "react-bootstrap";
-import { useState } from "react";
+import { useCallback } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 import Homeworks from "./Homeworks";
 import Resources from "./Resources";
 import Tests from "./Tests";
 import MainNavbar from "@/components/MainNavbar";
+import Link from "next/link";
 
 /**
  * @component
  * @param {object} props
- * @param {string} props.componentValue
- * @returns 
+ * @param {string} props.blockNo
+ * @returns
  */
-function ComponentBlock({componentValue}) {
-  switch (componentValue) {
+function Block({ blockNo }) {
+  switch (blockNo) {
     case "1":
       return <Resources />;
     case "2":
@@ -33,12 +35,23 @@ function ComponentBlock({componentValue}) {
 }
 
 export default () => {
-  const components = [
+  const pathName = usePathname();
+  const searchParams = useSearchParams();
+  const blocks = [
     { name: "教材", value: "1" },
     { name: "作業", value: "2" },
     { name: "測驗", value: "3" },
   ];
-  const [componentValue, setcomponentValue] = useState("1");
+
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
   return (
     <div>
       <MainNavbar />
@@ -48,21 +61,18 @@ export default () => {
             className="mx-3 p-2 border-5 rounded h-100"
             style={{ backgroundColor: "lightskyblue" }}
           >
-            <ToggleButtonGroup
-              className="w-100 mb-auto"
-              name="component"
-              vertical
-            >
-              {components.map((component) => (
+            <ToggleButtonGroup className="w-100 mb-auto" name="blocks" vertical>
+              {blocks.map((block) => (
                 <Button
-                  key={`component-${component.value}`}
-                  id={`component-${component.value}`}
+                  as={Link}
+                  key={`block-${block.value}`}
+                  id={`block-${block.value}`}
                   variant="primary"
-                  value={component.value}
-                  active={componentValue === component.value}
-                  onClick={(e) => setcomponentValue(e.currentTarget.value)}
+                  value={block.value}
+                  active={block.value === searchParams.get("blockNo")}
+                  href={pathName + "?" + createQueryString("blockNo", block.value)}
                 >
-                  {component.name}
+                  {block.name}
                 </Button>
               ))}
             </ToggleButtonGroup>
@@ -70,7 +80,7 @@ export default () => {
         </div>
         <div className="col-11 px-5">
           <Container className="bg-dark h-100 border-5 rounded">
-            <ComponentBlock componentValue={componentValue} />
+            <Block blockNo={searchParams.get("blockNo")} />
           </Container>
         </div>
       </div>
