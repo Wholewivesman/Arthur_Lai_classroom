@@ -1,20 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verify } from "jsonwebtoken";
 
-/**
- * @param {NextRequest} req
- */
-export async function POST(req) {
-  const { token } = await req.json();
-  if (!token) return NextResponse.json({ success: false }, { status: 401 });
+const TOKEN_KEY = process.env.USER_TOKEN_COOKIE_KEY;
 
+/**
+ *
+ * @param {NextRequest} req
+ * @returns
+ */
+export async function GET(req) {
   let success = false;
 
-  if (typeof token === "string") {
-    try {
-      success = verify(token, process.env.JWT_SECRET);
-    } catch {
-      return NextResponse.json({ success });
+  if (req.cookies.has(TOKEN_KEY)) {
+    const userToken = req.cookies.get(TOKEN_KEY).value;
+
+    if (typeof userToken === "string") {
+      try {
+        success = verify(userToken, process.env.JWT_SECRET);
+      } catch {}
     }
   }
 

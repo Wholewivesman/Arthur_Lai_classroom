@@ -17,7 +17,6 @@ async function handleStudentSubmit(event, setHasError, router) {
   const id = document.getElementById("id-input").value;
   const password = document.getElementById("password-input").value;
 
-  let status;
   fetch("/api/auth/login/student", {
     method: "POST",
     body: JSON.stringify({
@@ -26,13 +25,8 @@ async function handleStudentSubmit(event, setHasError, router) {
     }),
   })
     .then((res) => {
-      status = res.status;
-      if (status == 200) return res.json();
-    })
-    .then((data) => {
-      switch (status) {
+      switch (res.status) {
         case 200:
-          setTokenLocal(data.token);
           router.push("/");
           break;
         case 401:
