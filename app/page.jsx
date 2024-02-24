@@ -9,7 +9,6 @@ import {
   Placeholder,
   Image,
 } from "react-bootstrap";
-import MainNavbar from "@/components/MainNavbar";
 
 function Announcement() {
   return (
@@ -82,21 +81,15 @@ function Gallery() {
 export default function HomePage() {
   return (
     <>
-      <MainNavbar />
+      {/* <MainNavbar /> */}
       <div className="w-100">
         <Gallery />
       </div>
       <Container className="mt-3">
-        {/* 聖哲的官網 */}
-        {/* <h1 className="text-center">聖哲老師的學習網站</h1> */}
         <Container className="d-flex justify-content-around mt-5">
           <Announcement />
           <Rules />
         </Container>
-        {/* <Container className="d-flex justify-content-around mt-5">
-          <Test1 />
-          <Test1 />
-        </Container> */}
       </Container>
     </>
   );

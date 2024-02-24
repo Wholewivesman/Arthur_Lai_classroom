@@ -11,7 +11,6 @@ import { usePathname, useSearchParams } from "next/navigation";
 import Homeworks from "./Homeworks";
 import Resources from "./Resources";
 import Tests from "./Exam";
-import MainNavbar from "@/components/MainNavbar";
 import Link from "next/link";
 
 /**
@@ -54,7 +53,6 @@ export default () => {
   );
   return (
     <div>
-      <MainNavbar />
       <div className="px-1 pt-4 d-flex" style={{ minHeight: "75vh" }}>
         <div className="col-1">
           <Container

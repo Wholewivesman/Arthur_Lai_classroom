@@ -2,9 +2,6 @@
 
 import { Button, Card, Container, Form } from "react-bootstrap";
 import { useState, Dispatch, SetStateAction } from "react";
-import { useRouter } from "next/navigation";
-import MainNavbar from "../components/MainNavbar";
-import { setTokenLocal } from "../client/token";
 
 /**
  *
@@ -12,7 +9,7 @@ import { setTokenLocal } from "../client/token";
  * @param {Dispatch<SetStateAction<boolean>>} setHasError
  * @param router
  */
-async function handleStudentSubmit(event, setHasError, router) {
+async function handleStudentSubmit(event, setHasError) {
   event.preventDefault();
   const id = document.getElementById("id-input").value;
   const password = document.getElementById("password-input").value;
@@ -27,7 +24,7 @@ async function handleStudentSubmit(event, setHasError, router) {
     .then((res) => {
       switch (res.status) {
         case 200:
-          router.push("/");
+          window.location.href = '/';
           break;
         case 401:
           setHasError(true);
@@ -39,7 +36,6 @@ async function handleStudentSubmit(event, setHasError, router) {
 }
 
 function StudentForm() {
-  const router = useRouter();
   const [hasError, setHasError] = useState(false);
   return (
     <Card className="w-100">
@@ -50,7 +46,7 @@ function StudentForm() {
         <Container>
           <Form
             onSubmit={(event) =>
-              handleStudentSubmit(event, setHasError, router)
+              handleStudentSubmit(event, setHasError)
             }
           >
             <Form.Label>學號:</Form.Label>
@@ -79,7 +75,6 @@ function StudentForm() {
 export default () => {
   return (
     <>
-      <MainNavbar />
       <div className="mt-5 mx-auto" style={{ width: "540px" }}>
         <StudentForm />
       </div>

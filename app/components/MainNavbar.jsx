@@ -3,6 +3,7 @@
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { verify } from "../client/token";
+import { useRouter } from "next/router";
 
 function BeforeLoggedIn() {
   return (
@@ -30,11 +31,26 @@ function AfterLoggedIn() {
         <NavDropdown.Divider />
         <NavDropdown.Item href="#action/3.4">自然課</NavDropdown.Item>
       </NavDropdown>
-      <Nav.Link style={{ fontSize: "20px" }} className="active" href="/Login">
-        <b>
-          <font face="UD Digi Kyokasho NK-B">帳號</font>
-        </b>
-      </Nav.Link>
+      <NavDropdown
+        style={{ fontSize: "20px" }}
+        title="帳號"
+        id="basic-nav-dropdown"
+      >
+        <NavDropdown.Item style={{ fontSize: "20px" }} href="/account">
+          個人資料
+        </NavDropdown.Item>
+        <NavDropdown.Divider />
+        <NavDropdown.Item
+          href="/"
+          onClick={(e) =>
+            fetch("/api/auth/logout", {
+              method: "GET",
+            })
+          }
+        >
+          登出
+        </NavDropdown.Item>
+      </NavDropdown>
     </Nav>
   );
 }
@@ -48,7 +64,7 @@ export default function MainNavbar() {
       setAuthed(true);
     }
   }, [authed]);
-
+  
   return (
     <Navbar
       expand="lg"

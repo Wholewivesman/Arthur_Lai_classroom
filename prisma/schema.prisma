@@ -13,8 +13,10 @@ datasource db {
 model Student {
   id       String @id @unique
   password String
-  // name String
-  // loginHash String?
+  name String
+  class Int
+  number Int
+  wealth Int @default(0)
 }
 
 model Exam {

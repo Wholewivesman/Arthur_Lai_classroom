@@ -32,7 +32,7 @@ export async function POST(req) {
 
   cookies().set(process.env.USER_TOKEN_COOKIE_KEY, token, { maxAge });
   return NextResponse.json(
-    {},
+    {foo: token},
     {
       status: 200,
     }
