@@ -32,6 +32,8 @@ export default () => {
               <span>number</span>
           </Col>
         </Row>
+        {/* embed pdf in the page: /1104PDF_6.pdf */}
+        {/* <iframe src="/res/pdf/1104PDF_6.pdf" width="100%" height="500px" /> */}
       </Container>
     </div>
   );

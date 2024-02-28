@@ -1,9 +1,9 @@
 "use client";
 
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { verify } from "../client/token";
-import { useRouter } from "next/router";
 
 function BeforeLoggedIn() {
   return (
@@ -56,14 +56,17 @@ function AfterLoggedIn() {
 }
 
 export default function MainNavbar() {
+  const router = useRouter();
+  let oldPathname = null;
+  const { pathname } = router;
   const [authed, setAuthed] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
-    if (!authed) {
+    if (!authed && pathname !== oldPathname) {
       verify().then((success) => setLoggedIn(success));
       setAuthed(true);
     }
-  }, [authed]);
+  }, [authed, pathname]);
   
   return (
     <Navbar
@@ -79,7 +82,7 @@ export default function MainNavbar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          {authed ? loggedIn ? <AfterLoggedIn /> : <BeforeLoggedIn /> : <></>}
+          {authed ? (loggedIn ? <AfterLoggedIn /> : <BeforeLoggedIn />) : <p>processing</p>}
         </Navbar.Collapse>
       </Container>
     </Navbar>

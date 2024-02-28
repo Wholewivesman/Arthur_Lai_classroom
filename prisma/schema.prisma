@@ -13,20 +13,25 @@ datasource db {
 model Student {
   id       String @id @unique
   password String
-  name String
-  class Int
-  number Int
-  wealth Int @default(0)
+  name     String
+  class    Int
+  number   Int
+  wealth   Int    @default(0)
 }
 
+// model Resource {
+//   id  String @id @unique
+
+// }
+
 model Exam {
-  id Int @id @default(autoincrement())
+  id   Int    @id @default(autoincrement())
   name String
 }
 
 model Question {
-  id Int @id @default(autoincrement())
-  statement String
-  optionJson String
+  id          Int    @id @default(autoincrement())
+  statement   String
+  optionJson  String
   explanation String
 }
