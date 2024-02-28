@@ -1,43 +1,24 @@
 "use client";
 
-import {
-  ToggleButtonGroup,
-  ToggleButton,
-  Container,
-  Button,
-} from "react-bootstrap";
-import { useCallback } from "react";
+import { Col, Row, Container, Button } from "react-bootstrap";
 import { usePathname, useSearchParams } from "next/navigation";
-import Homeworks from "./Homeworks";
-import Resources from "./Resources";
-import Tests from "./Exam";
-import Link from "next/link";
-
-/**
- * @component
- * @param {object} props
- * @param {string} props.blockNo
- * @returns
- */
-function Block({ blockNo }) {
-  switch (blockNo) {
-    case "1":
-      return <Resources />;
-    case "2":
-      return <Homeworks />;
-    case "3":
-      return <Tests />;
-    default:
-      break;
-  }
-  return <div />;
-}
+import VolumeCard from "./VolumeCard";
 
 export default () => {
-  const searchParams = useSearchParams();
+  const arr = Array.from(Array(10).keys());
   return (
-    <Container className="bg-dark h-100 border-5 rounded">
-      <Block blockNo={searchParams.get("blockNo")} />
+    <Container
+      className="bg-dark w-100 mt-3 border-5 rounded py-2"
+      style={{ minHeight: "75vh" }}
+    >
+      <Row className="me-auto" xs={1} sm={1} md={2} lg={3} xl={4} xxl={4}>
+        {arr.map((a, index) => (
+          <Col key={`VolumeCard-Col-${index}`}>
+            <VolumeCard />
+          </Col>
+        ))}
+      </Row>
+      );
     </Container>
   );
 };

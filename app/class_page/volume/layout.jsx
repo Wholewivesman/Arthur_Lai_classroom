@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import SideTab from "./SideTab";
 
 export default function RootLayout({ children }) {

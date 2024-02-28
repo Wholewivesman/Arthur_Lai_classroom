@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, ToggleButtonGroup, Button, Link } from "react-bootstrap";
+import { Container, ToggleButtonGroup, Button } from "react-bootstrap";
 import { useCallback } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -31,7 +31,6 @@ export default function SideTab() {
       <ToggleButtonGroup className="w-100 mb-auto" name="blocks" vertical>
         {blocks.map((block) => (
           <Button
-            as={Link}
             key={`block-${block.value}`}
             id={`block-${block.value}`}
             variant="primary"
