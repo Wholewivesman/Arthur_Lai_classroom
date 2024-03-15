@@ -24,7 +24,7 @@ async function handleStudentSubmit(event, setHasError) {
     .then((res) => {
       switch (res.status) {
         case 200:
-          window.location.href = '/';
+          window.location.href = "/";
           break;
         case 401:
           setHasError(true);
@@ -32,7 +32,9 @@ async function handleStudentSubmit(event, setHasError) {
         default:
           break;
       }
-    });
+      return res.json();
+    })
+    .catch((err) => console.error(err));
 }
 
 function StudentForm() {
@@ -44,11 +46,7 @@ function StudentForm() {
       </Card.Header>
       <Card.Body>
         <Container>
-          <Form
-            onSubmit={(event) =>
-              handleStudentSubmit(event, setHasError)
-            }
-          >
+          <Form onSubmit={(event) => handleStudentSubmit(event, setHasError)}>
             <Form.Label>學號:</Form.Label>
             <Form.Control id="id-input" type="text"></Form.Control>
             <Form.Label>密碼:</Form.Label>

@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client";
 import { sign } from "jsonwebtoken";
 
 const prisma = new PrismaClient();
-const maxAge = 60 * 80;
+const maxAge = Number.parseInt(process.env.JWT_MAXAGE);
 
 /**
  * @param {NextRequest} req
@@ -12,7 +12,11 @@ const maxAge = 60 * 80;
 export async function POST(req) {
   const payload = await req.json();
   const { id, password } = payload;
-  if (!id || !password) return NextResponse.json({}, { status: 401 });
+  if (!id || !password)
+    return NextResponse.json(
+      { message: "Invalid username or password." },
+      { status: 401 }
+    );
 
   prisma.$connect();
   const result = await prisma.student.findUnique({
@@ -22,19 +26,21 @@ export async function POST(req) {
   });
   prisma.$disconnect();
 
-  if (result === null || result.password !== password)
-    return NextResponse.json({}, { status: 401 });
-
-  const token = sign(
-    { payload, exp: Math.floor(Date.now() / 1000) + maxAge },
-    process.env.JWT_SECRET
-  );
-
-  cookies().set(process.env.USER_TOKEN_COOKIE_KEY, token, { maxAge });
-  return NextResponse.json(
-    {foo: token},
-    {
-      status: 200,
-    }
-  );
+  let token = null;
+  if (result !== null && result.password === password) {
+    token = sign({ result, role: "student" }, process.env.JWT_SECRET, {
+      expiresIn: maxAge / 1000,
+    });
+  }
+  
+  if (token) {
+    cookies().set(process.env.USER_TOKEN_COOKIE_KEY, token);
+    return NextResponse.json(
+      { message: "Login successful." }
+    );
+  } else
+    return NextResponse.json(
+      { message: "Invalid username or password." },
+      { status: 401 }
+    );
 }

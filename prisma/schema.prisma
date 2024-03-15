@@ -14,19 +14,16 @@ model Student {
   id       String @id @unique
   password String
   name     String
-  class    Int
-  number   Int
+  gradeNo  String
+  classNo  String
+  number   String
   wealth   Int    @default(0)
 }
 
-// model Resource {
-//   id  String @id @unique
-
-// }
-
 model Exam {
-  id   Int    @id @default(autoincrement())
-  name String
+  id    Int    @id @default(autoincrement())
+  name  String
+  score Int
 }
 
 model Question {

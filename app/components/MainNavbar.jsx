@@ -1,8 +1,8 @@
 "use client";
 
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import { verify } from "../client/token";
+import { useContext } from "react";
+import { UserContext } from "app/contexts/UserContext";
 
 function BeforeLoggedIn() {
   return (
@@ -24,11 +24,19 @@ function AfterLoggedIn() {
         title="課程"
         id="basic-nav-dropdown"
       >
-        <NavDropdown.Item href="/class_page?classname=math">數學課</NavDropdown.Item>
-        <NavDropdown.Item href="/class_page?classname=Mandarin">國語課</NavDropdown.Item>
-        <NavDropdown.Item href="/class_page?classname=English">英文課</NavDropdown.Item>
+        <NavDropdown.Item href="/class_page?classname=math">
+          數學課
+        </NavDropdown.Item>
+        <NavDropdown.Item href="/class_page?classname=Mandarin">
+          國語課
+        </NavDropdown.Item>
+        <NavDropdown.Item href="/class_page?classname=English">
+          英文課
+        </NavDropdown.Item>
         {/* <NavDropdown.Divider /> */}
-        <NavDropdown.Item href="/class_page?classname=Science">自然課</NavDropdown.Item>
+        <NavDropdown.Item href="/class_page?classname=Science">
+          自然課
+        </NavDropdown.Item>
       </NavDropdown>
       <NavDropdown
         style={{ fontSize: "20px" }}
@@ -41,11 +49,11 @@ function AfterLoggedIn() {
         <NavDropdown.Divider />
         <NavDropdown.Item
           href="/"
-          onClick={(e) =>
+          onClick={(e) => {
             fetch("/api/auth/logout", {
               method: "GET",
-            })
-          }
+            });
+          }}
         >
           登出
         </NavDropdown.Item>
@@ -55,15 +63,7 @@ function AfterLoggedIn() {
 }
 
 export default function MainNavbar() {
-  const [authed, setAuthed] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
-  useEffect(() => {
-    if (!authed) {
-      verify().then((success) => setLoggedIn(success));
-      setAuthed(true);
-    }
-  }, [authed]);
-  
+  const userProfile = useContext(UserContext);
   return (
     <Navbar
       expand="lg"
@@ -78,7 +78,7 @@ export default function MainNavbar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          {authed ? (loggedIn ? <AfterLoggedIn /> : <BeforeLoggedIn />) : <></>}
+          {userProfile ? <AfterLoggedIn /> : <BeforeLoggedIn />}
         </Navbar.Collapse>
       </Container>
     </Navbar>

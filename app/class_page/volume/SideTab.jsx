@@ -4,7 +4,6 @@ import { Container, ToggleButtonGroup, Button } from "react-bootstrap";
 import { useCallback } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
-
 export default function SideTab() {
   const pathName = usePathname();
   const searchParams = useSearchParams();
@@ -23,6 +22,7 @@ export default function SideTab() {
     },
     [searchParams]
   );
+
   return (
     <Container
       className="mx-3 p-2 border-5 rounded h-100"
@@ -36,7 +36,11 @@ export default function SideTab() {
             variant="primary"
             value={block.value}
             active={block.value === searchParams.get("blockNo")}
-            href={pathName + "?" + createQueryString("blockNo", block.value)}
+            onClick={(e) => {
+              const url = new URL(location);
+              url.searchParams.set("blockNo", block.value);
+              window.history.pushState({}, "", url);
+            }}
           >
             {block.name}
           </Button>
