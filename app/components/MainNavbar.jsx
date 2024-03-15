@@ -20,6 +20,7 @@ function AfterLoggedIn() {
   return (
     <Nav className="nav navbar-nav ms-auto">
       <NavDropdown
+        align="end"
         style={{ fontSize: "20px" }}
         title="課程"
         id="basic-nav-dropdown"
@@ -39,6 +40,7 @@ function AfterLoggedIn() {
         </NavDropdown.Item>
       </NavDropdown>
       <NavDropdown
+        align="end"
         style={{ fontSize: "20px" }}
         title="帳號"
         id="basic-nav-dropdown"
