@@ -1,44 +1,37 @@
 "use client";
 
 import { Button, Card, Container, Form } from "react-bootstrap";
-import { useState, Dispatch, SetStateAction } from "react";
-
-/**
- *
- * @param {import("react").FormEvent} event
- * @param {Dispatch<SetStateAction<boolean>>} setHasError
- * @param router
- */
-async function handleStudentSubmit(event, setHasError) {
-  event.preventDefault();
-  const id = document.getElementById("id-input").value;
-  const password = document.getElementById("password-input").value;
-
-  fetch("/api/auth/login/student", {
-    method: "POST",
-    body: JSON.stringify({
-      id,
-      password,
-    }),
-  })
-    .then((res) => {
-      switch (res.status) {
-        case 200:
-          window.location.href = "/";
-          break;
-        case 401:
-          setHasError(true);
-          break;
-        default:
-          break;
-      }
-      return res.json();
-    })
-    .catch((err) => console.error(err));
-}
+import { useState } from "react";
 
 function StudentForm() {
   const [hasError, setHasError] = useState(false);
+
+  async function handleStudentSubmit(event) {
+    event.preventDefault();
+
+    const { id, password } = event.target;
+    fetch("/api/auth/login/student", {
+      method: "POST",
+      body: JSON.stringify({
+        id: id.value,
+        password: password.value,
+      }),
+    })
+      .then((res) => {
+        switch (res.status) {
+          case 200:
+            window.location.href = "/";
+            break;
+          case 401:
+            setHasError(true);
+            break;
+          default:
+            break;
+        }
+        return res.json();
+      })
+      .catch((err) => console.error(err));
+  }
   return (
     <Card className="w-100">
       <Card.Header className="text-center">
@@ -47,10 +40,20 @@ function StudentForm() {
       <Card.Body>
         <Container>
           <Form onSubmit={(event) => handleStudentSubmit(event, setHasError)}>
-            <Form.Label>學號:</Form.Label>
-            <Form.Control id="id-input" type="text"></Form.Control>
-            <Form.Label>密碼:</Form.Label>
-            <Form.Control id="password-input" type="password"></Form.Control>
+            <Form.Label htmlFor="id-input">學號:</Form.Label>
+            <Form.Control
+              id="id-input"
+              type="text"
+              name="id"
+              required
+            ></Form.Control>
+            <Form.Label htmlFor="password-input">密碼:</Form.Label>
+            <Form.Control
+              id="password-input"
+              type="password"
+              name="password"
+              required
+            ></Form.Control>
             {hasError && (
               <Form.Text className="text-light bg-danger">
                 學號或密碼錯誤
