@@ -80,7 +80,11 @@ export default function MainNavbar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          {userProfile ? <AfterLoggedIn /> : <BeforeLoggedIn />}
+          {Object.keys(userProfile).length === 0 ? (
+            <BeforeLoggedIn />
+          ) : (
+            <AfterLoggedIn />
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

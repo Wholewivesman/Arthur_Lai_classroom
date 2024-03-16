@@ -22,6 +22,9 @@ export default function RootLayout({ children }) {
         .catch((err) => console.error(err));
       console.log("auth end");
     }
+    return () => {
+      authRef.current = true;
+    };
   }, [userProfile]);
 
   return (
