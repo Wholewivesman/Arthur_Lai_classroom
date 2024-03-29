@@ -8,6 +8,10 @@ import jwt from "jsonwebtoken";
 
 const TOKEN_KEY = process.env.USER_TOKEN_COOKIE_KEY;
 
+const authPagesPatterns = [
+  /^\/account(\/.*)?$/,
+];
+
 /**
  *
  * @param {NextRequest} req
@@ -32,16 +36,20 @@ function checkAuth(req) {
  * @returns
  */
 export function middleware(req) {
-  // console.log(checkAuth(req));
-  // // Redirect to login page if user is not logged in when accessing the resources
-  // if (req.url.includes("/res") && !checkAuth(req))
-  //   return NextResponse.redirect(new URL("/login", req.url));
+  // Check if the user has authenticated
+  // let authed = checkAuth(req);
+  // for (const pattern of authPagesPatterns) {
+  //   // console.log("testing " + pattern);
+  //   if (pattern.test(req.nextUrl.pathname) && !authed) {
+  //     // return NextResponse.redirect("/");
+  //   }
+  // }
 
-  // // Redirect to login page if user is not logged in when accessing the account page
-  // if (req.url.includes("/account") && !checkAuth(req))
-  //   return NextResponse.redirect(new URL("/login", req.url));
+  // return NextResponse.next();
 
-  // // Redirect to main page if user has logged in
-  // if (req.url.includes("/login") && checkAuth(req))
-  //   return NextResponse.redirect(new URL("/", req.url));
+  // The pages for the authenticated users
+  
+  // The pages for the unauthenticated users
+
+  // The pages for all users
 }
