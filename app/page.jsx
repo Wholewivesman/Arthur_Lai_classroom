@@ -39,46 +39,43 @@ function Rules() {
 
 function Gallery() {
   return (
-    <Carousel>
-      <Carousel.Item>
-        <Placeholder
-          className="bg-dark w-100"
-          as={Image}
-          text="First slide"
-          style={{ height: "300px" }}
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Placeholder
-          className="bg-dark w-100"
-          as={Image}
-          text="Second slide"
-          style={{ height: "300px" }}
-        />
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Placeholder
-          className="bg-dark w-100"
-          as={Image}
-          text="Third slide"
-          style={{ height: "300px" }}
-        />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+    <div className="bg-dark">
+      <Carousel>
+        <Carousel.Item>
+          <Image
+            className="mx-auto"
+            src="./res/img/class_group_photo.jpg"
+            style={{ display: "block" }}
+            height={400}
+          />
+          <Carousel.Caption>
+            <h3>班級合照</h3>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Image
+            className="mx-auto"
+            src="./res/img/teaching_demo.jpg"
+            style={{ display: "block" }}
+            height={400}
+          />
+          <Carousel.Caption>
+            <h3>教學演示</h3>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Image
+            className="mx-auto"
+            src="./res/img/baseball_champion.jpg"
+            style={{ display: "block" }}
+            height={400}
+          />
+          <Carousel.Caption>
+            <h3>樂樂棒球冠軍</h3>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    </div>
   );
 }
 

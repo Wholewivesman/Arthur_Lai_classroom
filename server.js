@@ -4,7 +4,7 @@ const next = require("next");
 
 const port = parseInt(process.env.PORT || "3000", 10);
 const dev = process.env.NODE_ENV !== "production";
-const hostname = "localhost";
+const hostname = "192.168.100.3";
 const app = next({ dev, hostname, port });
 const requestHandler = app.getRequestHandler();
 
@@ -25,7 +25,7 @@ app.prepare().then(() => {
     })
     .listen(port, () => {
       console.log(
-        `> Server listening at http://localhost:${port} as ${
+        `> Server listening at http://${hostname}:${port} as ${
           dev ? "development" : process.env.NODE_ENV
         }`
       );
